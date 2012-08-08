@@ -29,10 +29,12 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt": "~0.3.12"
+    "grunt": "~0.3.12",
+    "jasmine-node": "*"
   },
   "devDependencies": {
-    "grunt": "~0.3.12"
+    "grunt": "~0.3.12",
+    "jasmine-node": "*"
   },
   "keywords": [
     "gruntplugin"

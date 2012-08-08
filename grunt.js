@@ -28,6 +28,11 @@ module.exports = function(grunt) {
         es5: true
       },
       globals: {}
+    },
+    jasmine: {
+      folder: {
+        src: "test-js"
+      }
     }
   });
 
@@ -35,6 +40,6 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   // Default task.
-  grunt.registerTask('default', 'lint test');
+  grunt.registerTask('default', 'jasmine');
 
 };

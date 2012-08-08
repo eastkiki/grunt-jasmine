@@ -8,23 +8,41 @@
 
 module.exports = function(grunt) {
 
-  // Please see the grunt documentation for more information regarding task and
-  // helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
+    // Please see the grunt documentation for more information regarding task and
+    // helper creation: https://github.com/cowboy/grunt/blob/master/docs/toc.md
 
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
+    // ==========================================================================
+    // TASKS
+    // ==========================================================================
 
-  grunt.registerTask('jasmine', 'Your task description goes here.', function() {
-    grunt.log.write(grunt.helper('jasmine'));
-  });
+    grunt.registerMultiTask('jasmine', 'Test unit by jasmine.', function() {
+        var jasmine = require("jasmine-node").executeSpecsInFolder;
+        var specFolder = this.file.src,
+            isVerbose = false,
+            showColors = true;
+        var onComplete = function(runner, log) {
+            if (runner.results().failedCount === 0) {
+                grunt.log.writeln('Pass to jasmine unit test : ' + specFolder);
+                done(true);
+            } else {
+                grunt.verbose.error();
+                throw grunt.task.taskError("Can't pass to jasmine unit test");
+            }
+        };
 
-  // ==========================================================================
-  // HELPERS
-  // ==========================================================================
+        var done = this.async();
+        jasmine(specFolder,
+            onComplete,
+            isVerbose,
+            showColors);
+    });
 
-  grunt.registerHelper('jasmine', function() {
-    return 'jasmine!!!';
-  });
+    // ==========================================================================
+    // HELPERS
+    // ==========================================================================
+
+    grunt.registerHelper('jasmine', function() {
+        return 'jasmine!!!';
+    });
 
 };
