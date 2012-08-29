@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/eastkiki/grunt-jasmine.png)](http://travis-ci.org/eastkiki/grunt-jasmine)
 # grunt-jasmine
 
 The best sample grunt tasks ever.
